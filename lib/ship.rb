@@ -1,28 +1,28 @@
 class Ship
 
-  def initialize
-    health
+  def initialize(cells)
+    @cells = cells
+    @health = cells.size
   end
 
 	def size
-		@size = 1
+		@cells.size
 	end
 
   def health
-    @size
+    @health
   end
 
   def floating?
-    @floating
+    not sunk?
   end
 
-
-  def floating
-    @floating = true
+  def hit!
+    @health = health - 1
   end
 
-  def sink!
-    @floating = false
+  def sunk?
+    @cells.all? { |cell| cell.hit? }
   end
 
 end
