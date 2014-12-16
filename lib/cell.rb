@@ -1,7 +1,7 @@
 class Cell
 
   def intialize
-     @full = false
+    @full = false
   end
 
   def full?
