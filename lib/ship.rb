@@ -1,12 +1,12 @@
 class Ship
 
-  def initialize(cells)
-    @cells = cells
-    @health = cells.size
+  def initialize(size)
+    @size = size
+    @health = size
   end
 
 	def size
-		@cells.size
+		@size
 	end
 
   def health
@@ -22,7 +22,12 @@ class Ship
   end
 
   def sunk?
-    @cells.all? { |cell| cell.hit? }
+    health == 0
   end
+
+  def self.aircraft_carrier
+    new 5
+  end
+
 
 end

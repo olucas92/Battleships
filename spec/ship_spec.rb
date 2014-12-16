@@ -2,13 +2,11 @@ require 'ship'
 
 describe Ship do
 
-	let(:ship) { Ship.new([double(:cell, hit?: false), double(:cell, hit?: false)]) }
-  let(:sunk_ship) { Ship.new([double(:cell, hit?: true), double(:cell, hit?: true)]) }
-  let(:damaged_ship) { Ship.new([double(:cell, hit?: true), double(:cell, hit?: false)])}
-
-	it 'should have a size when created' do
-		expect(ship.size).to eq(2)
-	end
+ let(:ship) { Ship.new(2) }
+	
+  it 'should have a size when created' do
+    expect(ship.size).to eq(2)
+  end
 
   it 'should have a health equal to size' do
     expect(ship.health).to eq(2)
@@ -18,12 +16,19 @@ describe Ship do
     expect { ship.hit! }.to change { ship.health }.from(2).to(1)
   end
 
-  it "should be sunk if all cells are hit" do
-    expect(sunk_ship).to be_sunk
+  it "should be sunk if all health is lost" do
+    ship.hit!
+    ship.hit!
+    expect(ship.sunk?).to eq(true)
   end
 
-  it "should not be sunk if only hit once" do
-    expect(damaged_ship).to be_floating
+  it "should not be sunk if health is not 0" do
+    ship.hit!
+    expect(ship).to be_floating
+  end
+
+  it "should be able create an aircraft carrier" do
+    expect(Ship.aircraft_carrier.size).to eq 5
   end
 
 end
