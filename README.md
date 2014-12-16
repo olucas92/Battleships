@@ -1,3 +1,3 @@
 #BattleShips
 
-building BattleShips with Gus
+building BattleShips with Gus and Ollie
