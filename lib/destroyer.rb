@@ -1,3 +1,0 @@
-class Destroyer
-
-end

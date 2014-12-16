@@ -1,14 +1,7 @@
-module Ship
+class Ship
 
 	def size
+		@size = 1
 	end
 
-	def full_health
-		@health == @size
-	end
-
-	def sunk
-		@health == 0
-	end
-	
 end
