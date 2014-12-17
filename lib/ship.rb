@@ -42,11 +42,6 @@ class Ship
       false
   end
 
-  def adjoining_cells_vertically(array)
-    true if array[0][0] == array[1][0] && array[0][1] == array[0][1].next
-  end
-
-
   def self.aircraft_carrier
     new 5
   end

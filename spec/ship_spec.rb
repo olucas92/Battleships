@@ -41,7 +41,7 @@ context 'Ship properties' do
     expect{ship.place(["a1", "j2"])}.to raise_error(RuntimeError, "Ship must be placed on adjoining cells") 
   end
 
-  it "should know if array is not sequencial" do
+  it "should know if array is not sequential" do
       expect(ship.adjoining(["a1", "j2"])).to eq false
   end
 
