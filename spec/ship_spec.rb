@@ -36,6 +36,15 @@ context 'Ship properties' do
   it 'should only be placed on the equivalent number of cells to size' do
     expect(lambda { ship.place(['a1','a2','a3']) }).to raise_error(RuntimeError, "Ship does not fit here")
   end
+
+  it "should only be able to be placed on adjoining cells" do
+    expect{ship.place(["a1", "j2"])}.to raise_error(RuntimeError, "Ship must be placed on adjoining cells") 
+  end
+
+  it "should know if array is not sequencial" do
+      expect(ship.adjoining(["a1", "j2"])).to eq false
+  end
+
 end
 
 context 'Types of ship' do
