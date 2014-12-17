@@ -20,12 +20,12 @@ class Cell
     @full = true
   end
 
-  def hit?
-    if full?
-      @hit = true
-    else
-      @hit = false
-    end
-  end
+  # def hit?
+  #   if full?
+  #     @hit = true
+  #   else
+  #     @hit = false
+  #   end
+  # end
 
 end

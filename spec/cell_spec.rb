@@ -13,13 +13,13 @@ describe Cell do
     expect(cell).to be_full
   end
 
-  it 'should be able to return hit if full' do
-    cell.fill!
-    expect(cell.hit?).to eq(true)
-  end
+  # it 'should be able to return hit if full' do
+  #   cell.fill!
+  #   expect(cell.hit?).to eq(true)
+  # end
 
-  it 'should be able to return miss if empty' do
-    expect(cell.hit?).to eq(false)
-  end
+  # it 'should be able to return miss if empty' do
+  #   expect(cell.hit?).to eq(false)
+  # end
 
 end

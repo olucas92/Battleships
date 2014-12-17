@@ -25,9 +25,29 @@ class Ship
     health == 0
   end
 
+  def place(array)
+    raise "Ship does not fit here" if array.size != @size
+    @cells = array
+  end
+
   def self.aircraft_carrier
     new 5
   end
 
+  def self.battleship
+    new 4
+  end
+
+  def self.submarine
+    new 3
+  end
+
+  def self.destroyer
+    new 3
+  end
+
+  def self.patrol_boat
+    new 2
+  end
 
 end
