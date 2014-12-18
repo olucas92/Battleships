@@ -1,6 +1,6 @@
 # require 'ship'
 # require 'cell'
-# require 'board'
+require 'board'
 
 class Player
 
@@ -29,8 +29,13 @@ class Player
   end
 
   def adjoining(coords)
+<<<<<<< HEAD
     previous_coord = coords.shift
     coords.map do |item|
+=======
+    previous_coord = coords.dup.shift
+    coords.each do |item|
+>>>>>>> ef6b89605d81ec02b51c471a373fdad84d7608a5
       return true if (previous_coord.next == item) || previous_coord.reverse.next.reverse == item 
     end 
     false

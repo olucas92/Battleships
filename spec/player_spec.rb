@@ -45,7 +45,7 @@ let(:board) { Board.new }
 
   it "should raise an error if trying to place a ship if all ships already placed" do
     place_all_ships
-    expect{player.place(board, player.patrol_boat,["h4", "h5"])}.to raise_error(RuntimeError, "No ships left to place!")
+    expect{player.place(board,player.patrol_boat,["h4", "h5"])}.to raise_error(RuntimeError, "No ships left to place!")
   end
 
 end
