@@ -7,6 +7,14 @@ let(:player) { Player.new }
 # let(:ship) {double :ship, size: 2}
 # let(:ship) {Ship.patrol_boat}
 
+  def place_all_ships
+    player.place(player.patrol_boat, ["a1","a2"])
+    player.place(player.aircraft_carrier, ["b1", "b2", "b3", "b4", "b5"])
+    player.place(player.battleship, ["c1", "c2","c3", "c4"])
+    player.place(player.destroyer, ["d1", "d2", "d3"])
+    player.place(player.submarine, ["e1", "e2", "e3"])
+  end
+
   it 'should have a fleet of 5 ships at start of game' do
     expect(player.ship_count).to eq(5)
   end
@@ -30,20 +38,12 @@ let(:player) { Player.new }
   end
 
   it "should know when all ships have been placed" do
-    player.place(player.patrol_boat, ["a1","a2"])
-    player.place(player.aircraft_carrier, ["b1", "b2", "b3", "b4", "b5"])
-    player.place(player.battleship, ["c1", "c2","c3", "c4"])
-    player.place(player.destroyer, ["d1", "d2", "d3"])
-    player.place(player.submarine, ["e1", "e2", "e3"])
+    place_all_ships
     expect(player.empty).to eq(true)
   end
 
   it "should raise an error if trying to place a ship if all ships already placed" do
-    player.place(player.patrol_boat, ["a1","a2"])
-    player.place(player.aircraft_carrier, ["b1", "b2", "b3", "b4", "b5"])
-    player.place(player.battleship, ["c1", "c2","c3", "c4"])
-    player.place(player.destroyer, ["d1", "d2", "d3"])
-    player.place(player.submarine, ["e1", "e2", "e3"])
+    place_all_ships
     expect{player.place(player.patrol_boat,["h4", "h5"])}.to raise_error(RuntimeError, "No ships left to place!")
   end
 
