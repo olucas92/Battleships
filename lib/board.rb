@@ -7,7 +7,7 @@ class Board
   def initialize
     @board_ships = []
     @places ||= {
-      a1: " ", a2: " ", a3: " ", a4: " ", a5: " ", a6: " ", a7: " ", a8: " ", a9: " ", a10: " ",
+      a1: Cell.new, a2: Cell.new, a3: " ", a4: " ", a5: " ", a6: " ", a7: " ", a8: " ", a9: " ", a10: " ",
       b1: " ", b2: " ", b3: " ", b4: " ", b5: " ", b6: " ", b7: " ", b8: " ", b9: " ", b10: " ",
       c1: " ", c2: " ", c3: " ", c4: " ", c5: " ", c6: " ", c7: " ", c8: " ", c9: " ", c10: " ",
       d1: " ", d2: " ", d3: " ", d4: " ", d5: " ", d6: " ", d7: " ", d8: " ", d9: " ", d10: " ",
@@ -20,11 +20,11 @@ class Board
   }
   end
 
-  def board_cells
-    places.each do |key,value|
-      places[key] = Cell.new
-    end
-  end
+  # def board_cells
+  #   places.each do |key,value|
+  #     places[key] = Cell.new
+  #   end
+  # end
 
   def ship_count
     @board_ships.size
@@ -33,6 +33,24 @@ class Board
   def receive(ship, coords)
     @board_ships << [ship, coords]
   end
+
+  def ship_cells_array
+    @ship_cells = @board_ships.map do |ships|
+                    ships[1]
+                  end
+    @ship_cells.flatten
+    @ship_cells.each do |cell|
+      @places[cell.to_sym] = Cell.new.full
+    end
+  end
+
+
+
+
+
+
+
+
 
 
 
