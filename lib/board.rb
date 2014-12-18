@@ -31,7 +31,7 @@ class Board
   end
 
   def receive(ship, coords)
-    p @board_ships << [ship, coords]
+    @board_ships << [ship, coords]
   end
 
 

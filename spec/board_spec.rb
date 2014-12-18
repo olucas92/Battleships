@@ -24,7 +24,7 @@ describe Board do
     expect(board.ship_count).to eq 1
   end
 
-  it "should be able to fill a cell given the coordinates"
+  it "should be able to fill a cell given the coordinates" do
 
   end
 

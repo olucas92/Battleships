@@ -30,9 +30,8 @@ class Player
 
   def adjoining(coords)
     previous_coord = coords.shift
-    coords.each do |item|
+    coords.map do |item|
       return true if (previous_coord.next == item) || previous_coord.reverse.next.reverse == item 
-      previous_coord = item
     end 
     false
   end
