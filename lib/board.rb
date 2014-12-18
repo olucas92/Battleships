@@ -26,21 +26,21 @@ class Board
     end
   end
 
-  def place(space)
+  def receive_ship(cell)
     full_cell = Cell.new
     full_cell.fill!
-    places[space] = full_cell
+    places[cell] = full_cell
   end
 
 
-  def draw
-    puts "   a b c"
-    puts ""
-    puts " 1 #{@places[:a1]}|#{@places[:b1]}|#{@places[:c1]}"
-    puts "   -----"
-    puts " 2 #{@places[:a2]}|#{@places[:b2]}|#{@places[:c2]}"
-    puts "   -----"
-    puts " 3 #{@places[:a3]}|#{@places[:b3]}|#{@places[:c3]}"
-  end
+  # def draw
+  #   puts "   a b c"
+  #   puts ""
+  #   puts " 1 #{@places[:a1]}|#{@places[:b1]}|#{@places[:c1]}"
+  #   puts "   -----"
+  #   puts " 2 #{@places[:a2]}|#{@places[:b2]}|#{@places[:c2]}"
+  #   puts "   -----"
+  #   puts " 3 #{@places[:a3]}|#{@places[:b3]}|#{@places[:c3]}"
+  # end
 
 end

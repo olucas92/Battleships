@@ -17,41 +17,34 @@ let(:player) { Player.new }
     expect(player.ship_count).to eq 4
   end
 
+  it 'should only be placed on the equivalent number of cells to size' do
+    expect(lambda { player.place(player.patrol_boat,['a1','a2','a3']) }).to raise_error(RuntimeError, "Ship does not fit here")
+  end
 
+  it "should only be able to be placed on adjoining cells" do
+    expect{player.place(player.patrol_boat,["a1", "j2"])}.to raise_error(RuntimeError, "Ship must be placed on adjoining cells") 
+  end
+
+  it "should know if array is not sequential" do
+    expect(player.adjoining(["a1", "j2"])).to eq false
+  end
+
+  it "should know when all ships have been placed" do
+    player.place(player.patrol_boat, ["a1","a2"])
+    player.place(player.aircraft_carrier, ["b1", "b2", "b3", "b4", "b5"])
+    player.place(player.battleship, ["c1", "c2","c3", "c4"])
+    player.place(player.destroyer, ["d1", "d2", "d3"])
+    player.place(player.submarine, ["e1", "e2", "e3"])
+    expect(player.empty).to eq(true)
+  end
+
+  it "should raise an error if trying to place a ship if all ships already placed" do
+    player.place(player.patrol_boat, ["a1","a2"])
+    player.place(player.aircraft_carrier, ["b1", "b2", "b3", "b4", "b5"])
+    player.place(player.battleship, ["c1", "c2","c3", "c4"])
+    player.place(player.destroyer, ["d1", "d2", "d3"])
+    player.place(player.submarine, ["e1", "e2", "e3"])
+    expect{player.place(player.patrol_boat,["h4", "h5"])}.to raise_error(RuntimeError, "No ships left to place!")
+  end
 
 end
-
-
-
-
-  # it 'should be able to be placed using an array of cells' do
-  #   expect(ship.place(["a1","a2"]).class).to eq(Array)
-  # end
-
-  # it 'should only be placed on the equivalent number of cells to size' do
-  #   expect(lambda { ship.place(['a1','a2','a3']) }).to raise_error(RuntimeError, "Ship does not fit here")
-  # end
-
-  # it "should only be able to be placed on adjoining cells" do
-  #   expect{ship.place(["a1", "j2"])}.to raise_error(RuntimeError, "Ship must be placed on adjoining cells") 
-  # end
-
-  # it "should know if array is not sequential" do
-  #     expect(ship.adjoining(["a1", "j2"])).to eq false
-  # end
-
-
-
-
-
-
-
-
-  #  it 'should know when all ships have been placed' do
-  #   Ship.aircraft_carrier.place(["a1","b1", "c1", "d1", "e1"])
-  #   Ship.destroyer.place(["a2", "b2", "c2"])
-  #   Ship.submarine.place(["a3", "b3", "c3"])
-  #   Ship.battleship.place(["a4", "b4", "c4", "d4"])
-  #   Ship.patrol_boat.place(["a5", "b5"])
-  #   expect(player.ship_count).to eq(0)
-  # end
