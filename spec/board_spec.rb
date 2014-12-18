@@ -2,15 +2,26 @@ require 'board'
 
 describe Board do
 
-  let(:board) {Board.new}
+  let(:board) { Board.new }
+  let(:player) { Player.new }
+  let(:ship) { Ship.new(2) }
 
-  it 'should be able to place a ship to make cell full' do
-    board.receive_ship("a1")
-    expect(board.places["a1"]).to be_full
+  it 'should have no ships to start' do
+    expect(board.ship_count).to eq 0
   end
 
-  # it 'should knoow when it is ready' do
-  #   5.times {board.place}
-  # end
+  it "should be able to receive ships from the player" do
+    # 1. ask something of an object
+    # 2. check for return?
+    # 3. check for change in state?
+    player.place(board, ship, ['a1','a2'])
+    player.place(board, ship, ['b1', 'b2'])
+    expect(board.ship_count).to eq 2  
+  end
 
+  it "should be able to receive ships from the player in a position" do
+    board.receive(ship, 'j2')
+    expect(board.ship_count).to eq 1
+  end
 end
+

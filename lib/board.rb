@@ -1,11 +1,11 @@
 require_relative 'cell'
-require 'ship'
 
 class Board
 
-  attr_accessor :places
+  attr_accessor :places, :board_ships
 
-  def places
+  def initialize
+    @board_ships = []
     @places ||= {
       a1: " ", a2: " ", a3: " ", a4: " ", a5: " ", a6: " ", a7: " ", a8: " ", a9: " ", a10: " ",
       b1: " ", b2: " ", b3: " ", b4: " ", b5: " ", b6: " ", b7: " ", b8: " ", b9: " ", b10: " ",
@@ -26,11 +26,21 @@ class Board
     end
   end
 
-  def receive_ship(cell)
-    full_cell = Cell.new
-    full_cell.fill!
-    places[cell] = full_cell
+  def ship_count
+    @board_ships.size
   end
+
+  def receive(ship, coords)
+    p @board_ships << [ship, coords]
+  end
+
+
+
+  # def receive_ship(cell)
+  #   full_cell = Cell.new
+  #   full_cell.fill!
+  #   places[cell] = full_cell
+  # end
 
 
   # def draw
