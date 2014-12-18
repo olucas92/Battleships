@@ -23,5 +23,13 @@ describe Board do
     board.receive(ship, 'j2')
     expect(board.ship_count).to eq 1
   end
+
+  it "should be able to fill a cell given the coordinates"
+
+  end
+
+  #Hello
+
+
 end
 
