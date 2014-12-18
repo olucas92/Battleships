@@ -28,8 +28,5 @@ describe Board do
 
   end
 
-  #Hello
-
-
 end
 
