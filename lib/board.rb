@@ -20,12 +20,6 @@ class Board
   }
   end
 
-  # def board_cells
-  #   places.each do |key,value|
-  #     places[key] = Cell.new
-  #   end
-  # end
-
   def ship_count
     @board_ships.size
   end
@@ -34,18 +28,11 @@ class Board
     @board_ships << [ship, coords]
   end
 
-# [['<Ship:0x007fd75917ab78 @size=3, @health=3>', ["a1", "b1", "c1"]], ['<Ship:0x007fd75917ac90 @size=2, @health=2>', ["a1", "b1"]]]
-
   def ship_cells_array
-    @ship_cells = @board_ships.map do |ships|
-                    ships[1]
-                  end
+    @ship_cells = @board_ships.map { |ships| ships[1] }
     @ship_cells.flatten!
-    @ship_cells.each do |cell|
-      places[cell.to_sym] = 'S'
-    end
+    @ship_cells.each { |cell| places[cell.to_sym] = 'S' }
   end
-
 
   # def receive_ship(cell)
   #   full_cell = Cell.new
