@@ -1,4 +1,5 @@
 require 'board'
+require 'player'
 
 describe Board do
 
@@ -24,9 +25,18 @@ describe Board do
     expect(board.ship_count).to eq 1
   end
 
-  it "should be able to fill a cell given the coordinates" do
+  it "should be able to fill places given the coordinates" do
+    player.place(board,player.patrol_boat,['a1','b1'])
+    board.ship_cells_array
+    expect(board.places[:a1]).to eq('S')
+    expect(board.places[:b1]).to eq('S')
 
   end
+
+  # it "should be initialized with the ships in the right cells" do
+  #   player.place(board, player.patrol_ship, ['a1','a2'])
+
+  # end 
 
 end
 

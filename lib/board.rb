@@ -20,12 +20,6 @@ class Board
   }
   end
 
-  def board_cells
-    places.each do |key,value|
-      places[key] = Cell.new
-    end
-  end
-
   def ship_count
     @board_ships.size
   end
@@ -34,7 +28,11 @@ class Board
     @board_ships << [ship, coords]
   end
 
-
+  def ship_cells_array
+    @ship_cells = @board_ships.map { |ships| ships[1] }
+    @ship_cells.flatten!
+    @ship_cells.each { |cell| places[cell.to_sym] = 'S' }
+  end
 
   # def receive_ship(cell)
   #   full_cell = Cell.new
@@ -43,14 +41,18 @@ class Board
   # end
 
 
-  # def draw
-  #   puts "   a b c"
-  #   puts ""
-  #   puts " 1 #{@places[:a1]}|#{@places[:b1]}|#{@places[:c1]}"
-  #   puts "   -----"
-  #   puts " 2 #{@places[:a2]}|#{@places[:b2]}|#{@places[:c2]}"
-  #   puts "   -----"
-  #   puts " 3 #{@places[:a3]}|#{@places[:b3]}|#{@places[:c3]}"
-  # end
+  def draw
+    puts "   a b c"
+    puts ""
+    puts " 1 #{@places[:a1]}|#{@places[:b1]}|#{@places[:c1]}|#{@places[:d1]}|#{@places[:e1]}"
+    puts "   -----"
+    puts " 2 #{@places[:a2]}|#{@places[:b2]}|#{@places[:c2]}|#{@places[:d2]}|#{@places[:e2]}"
+    puts "   -----"
+    puts " 3 #{@places[:a3]}|#{@places[:b3]}|#{@places[:c3]}|#{@places[:d3]}|#{@places[:e3]}"
+    puts "   -----"
+    puts " 3 #{@places[:a4]}|#{@places[:b4]}|#{@places[:c4]}|#{@places[:d4]}|#{@places[:e4]}"
+    puts "   -----"
+    puts " 3 #{@places[:a5]}|#{@places[:b5]}|#{@places[:c5]}|#{@places[:d5]}|#{@places[:e5]}"
+  end
 
 end

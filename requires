@@ -4,4 +4,3 @@ require './lib/board.rb'
 require './lib/player.rb'
 player = Player.new
 board = Board.new
-patrol_boat = Ship.patrol_boat
