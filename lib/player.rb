@@ -1,6 +1,6 @@
 # require 'ship'
 # require 'cell'
-require 'board'
+# require 'board'
 
 class Player
 
