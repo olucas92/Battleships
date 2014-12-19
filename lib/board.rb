@@ -28,7 +28,6 @@ class Board
 
   def ship_count
     @board_ships.size
-    @board_ships
   end
 
   def receive(ship, coords)

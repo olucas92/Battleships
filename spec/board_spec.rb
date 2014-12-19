@@ -26,8 +26,9 @@ describe Board do
   end
 
   it "should be able to fill places given the coordinates" do
+    player.place(board,player.patrol_boat,['a1','b1'])
     board.ship_cells_array
-    expect(ship.places[:a1]).to eq(Cell.new.full)
+    expect(board.places[:a1]).to eq('S')
   end
 
   # it "should be initialized with the ships in the right cells" do
